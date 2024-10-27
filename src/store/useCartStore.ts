@@ -12,6 +12,7 @@ type CartStore = {
 	totalPrice: number;
 	shippingPrice: number;
 	addToCart: (productId: number, quantity: number) => void;
+	decreaseQuantity: (productId: number, quantity?: number) => void;
 	removeFromCart: (productId: number) => void;
 	clearCart: () => void;
 };
@@ -21,11 +22,51 @@ export const useCartStore = create<CartStore>(set => ({
 	totalQuantity: 0,
 	totalPrice: 0,
 	shippingPrice: 2,
+
 	addToCart: (productId, quantity) =>
 		set(state => {
 			const existingItem = state.cartItemsById[productId];
 			const updatedQuantity = existingItem ? existingItem.quantity + quantity : quantity;
 
+			const updatedItemsById = {
+				...state.cartItemsById,
+				[productId]: {productId, quantity: updatedQuantity},
+			};
+
+			const newTotalQuantity = Object.values(updatedItemsById).reduce((acc, item) => acc + item.quantity, 0);
+			const newTotalPrice = Object.values(updatedItemsById).reduce((acc, item) => acc + item.quantity * getPrice(item.productId), 0);
+
+			return {
+				cartItemsById: updatedItemsById,
+				totalQuantity: newTotalQuantity,
+				totalPrice: newTotalPrice,
+			};
+		}),
+
+	decreaseQuantity: (productId, quantity = 1) =>
+		set(state => {
+			const existingItem = state.cartItemsById[productId];
+
+			// If item doesn't exist, return current state
+			if (!existingItem) return state;
+
+			const updatedQuantity = existingItem.quantity - quantity;
+
+			// If updated quantity is 0 or less, remove item from cart
+			if (updatedQuantity <= 0) {
+				const {[productId]: _, ...updatedItemsById} = state.cartItemsById;
+
+				const newTotalQuantity = Object.values(updatedItemsById).reduce((acc, item) => acc + item.quantity, 0);
+				const newTotalPrice = Object.values(updatedItemsById).reduce((acc, item) => acc + item.quantity * getPrice(item.productId), 0);
+
+				return {
+					cartItemsById: updatedItemsById,
+					totalQuantity: newTotalQuantity,
+					totalPrice: newTotalPrice,
+				};
+			}
+
+			// Otherwise, update the quantity
 			const updatedItemsById = {
 				...state.cartItemsById,
 				[productId]: {productId, quantity: updatedQuantity},

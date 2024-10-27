@@ -8,7 +8,7 @@ type TCartItem = {
 	id: number;
 };
 const CartItem = ({id}: TCartItem) => {
-	const {cartItemsById, removeFromCart} = useCartStore();
+	const {cartItemsById, removeFromCart, decreaseQuantity, addToCart} = useCartStore();
 	const {productsById} = useProductStore();
 	const item = productsById[cartItemsById[id].productId];
 	return (
@@ -35,9 +35,19 @@ const CartItem = ({id}: TCartItem) => {
 				<div className='ml-auto'>
 					<h4 className='text-lg font-bold text-gray-800 max-sm:text-base'>{item.price}</h4>
 					<div className='mt-6 flex items-center px-3 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md'>
-						<MinusIcon className='w-2.5 fill-current cursor-pointer' />
+						<MinusIcon
+							className='w-2.5 fill-current cursor-pointer'
+							onClick={() => {
+								decreaseQuantity(id);
+							}}
+						/>
 						<span className='mx-3 font-bold'>{cartItemsById[id].quantity}</span>
-						<PlusIcon className='w-2.5 fill-current cursor-pointer' />
+						<PlusIcon
+							className='w-2.5 fill-current cursor-pointer'
+							onClick={() => {
+								addToCart(id, 1);
+							}}
+						/>
 					</div>
 				</div>
 			</div>
