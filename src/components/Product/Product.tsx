@@ -1,15 +1,16 @@
 import {useProductStore} from '../../store/useProductStore';
-import AddToCart from '../shared/Buttons/AddToCart';
-import AddToFavorite from '../shared/Buttons/AddToFavorite';
+import AddToCart from '../Buttons/AddToCart';
+import AddToFavorite from '../Buttons/AddToFavorite';
 import Rating from '../shared/Rating';
 
 type TProduct = {
 	id: number;
 };
 export const Product = ({id}: TProduct) => {
-	const {productsById} = useProductStore();
+	const productsById = useProductStore(state => state.productsById);
 	const product = productsById[id];
 	const {price, image, rating, description, title, category} = product;
+
 	return (
 		<div key={product.id} className='h-full'>
 			<div className='relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md pt-3'>
@@ -27,7 +28,7 @@ export const Product = ({id}: TProduct) => {
 					</div>
 					<div className='flex justify-between '>
 						<AddToFavorite id={id} />
-						<AddToCart id={id} />
+						<AddToCart productId={id} />
 					</div>
 				</div>
 			</div>

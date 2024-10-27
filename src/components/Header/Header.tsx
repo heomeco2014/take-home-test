@@ -1,9 +1,9 @@
 import {Link} from 'react-router-dom';
-import {useProductStore} from '../../store/useProductStore';
 import CartIcon from '../../assets/icons/CartIcon';
+import {useCartStore} from '../../store/useCartStore';
 
 const Header = () => {
-	const {productsById} = useProductStore();
+	const totalProducts = useCartStore(state => state.totalQuantity);
 
 	return (
 		<header className='sticky top-0 z-[2] w-full flex justify-between items-center p-4 bg-white text-black shadow-md'>
@@ -22,7 +22,7 @@ const Header = () => {
 			{/* Cart Icon with Badge */}
 			<Link to={'/cart'} className='relative'>
 				<CartIcon className='h-6 w-6 cursor-pointer hover:text-gray-300' />
-				<span className='absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center'>1</span>
+				<span className='absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center'>{totalProducts}</span>
 			</Link>
 		</header>
 	);

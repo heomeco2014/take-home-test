@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import FavIcon from '../../../assets/icons/FavoriteIcon';
+import FavIcon from '../../assets/icons/FavoriteIcon';
 
 type AddToFavoriteProps = {
 	id: number;
