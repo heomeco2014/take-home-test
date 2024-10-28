@@ -13,16 +13,16 @@ export const Product = ({id}: TProduct) => {
 
 	return (
 		<div key={product.id} className='h-full'>
-			<div className='relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md pt-3'>
+			<div className='relative flex flex-col w-full max-w-xs pt-3 m-10 overflow-hidden bg-white border border-gray-100 rounded-lg shadow-md'>
 				<div className='absolute -top-2'>
 					<Category category={category} />
 				</div>
-				<div className='mx-auto mt-3 flex h-60 overflow-hidden rounded-xl'>
+				<div className='flex mx-auto mt-3 overflow-hidden h-60 rounded-xl'>
 					<img className='object-cover' src={image} alt='product' />
 				</div>
-				<div className='mt-4 px-5 pb-5'>
+				<div className='px-5 pb-5 mt-4'>
 					<h5 className='text-xl tracking-tight text-slate-900'>{title}</h5>
-					<div className='mt-2 mb-5 flex items-center justify-between'>
+					<div className='flex items-center justify-between mt-2 mb-5'>
 						<span className='text-2xl font-bold text-slate-900'>${price}</span>
 						<Rating count={rating.count} rate={rating.rate} />
 					</div>

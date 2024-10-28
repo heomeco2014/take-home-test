@@ -45,15 +45,15 @@ const AddToCart = ({productId}: TAddToCart) => {
 		<div className='flex items-center space-x-4'>
 			{isAdded ? (
 				<div className='flex items-center space-x-2'>
-					<button className='flex items-center justify-center px-3 py-2 text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none' onClick={handleRemoveFromCart}>
+					<button className='flex items-center justify-center px-3 py-2.5 text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none' onClick={handleRemoveFromCart}>
 						Remove
 					</button>
 					<div className='flex items-center overflow-hidden border rounded-md'>
-						<button className='px-3 py-2 text-sm font-medium bg-gray-200 hover:bg-gray-300' onClick={handleDecrement}>
+						<button className='px-3 py-2.5 text-sm font-medium bg-gray-200 hover:bg-gray-300' onClick={handleDecrement}>
 							-
 						</button>
-						<div className='px-4 py-2 text-sm font-medium bg-white'>{quantity}</div>
-						<button className='px-3 py-2 text-sm font-medium bg-gray-200 hover:bg-gray-300' onClick={handleIncrement}>
+						<div className='px-4 py-2.5 text-sm font-medium bg-white'>{quantity}</div>
+						<button className='px-3 py-2.5 text-sm font-medium bg-gray-200 hover:bg-gray-300' onClick={handleIncrement}>
 							+
 						</button>
 					</div>

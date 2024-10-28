@@ -3,6 +3,7 @@ import PlusIcon from '../../assets/icons/PlusIcon';
 import TrashIcon from '../../assets/icons/TrashIcon';
 import {useCartStore} from '../../store/useCartStore';
 import {useProductStore} from '../../store/useProductStore';
+import {currencyFormatter} from '../../utils/helperFunctions';
 
 type TCartItem = {
 	id: number;
@@ -33,7 +34,7 @@ const CartItem = ({id}: TCartItem) => {
 					</div>
 				</div>
 				<div className='ml-auto'>
-					<h4 className='text-lg font-bold text-gray-800 max-sm:text-base'>{item.price}</h4>
+					<h4 className='text-lg font-bold text-gray-800 max-sm:text-base'>{currencyFormatter(+item.price * cartItemsById[id].quantity)}</h4>
 					<div className='mt-6 flex items-center px-3 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md'>
 						<MinusIcon
 							className='w-2.5 fill-current cursor-pointer'

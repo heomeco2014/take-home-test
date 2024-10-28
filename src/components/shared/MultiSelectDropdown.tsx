@@ -63,7 +63,7 @@ export default function MultiSelectDropdown({formFieldName, options, onChange, p
 	};
 
 	return (
-		<label className='relative z-[2] px-10'>
+		<label className='relative z-[2]'>
 			<input type='checkbox' className='hidden peer' />
 
 			<div className="cursor-pointer after:content-['▼'] after:text-xs after:ml-1 after:inline-flex after:items-center peer-checked:after:-rotate-180 after:transition-transform inline-flex border rounded px-5 py-2">
@@ -71,7 +71,7 @@ export default function MultiSelectDropdown({formFieldName, options, onChange, p
 				{isJsEnabled && selectedOptions.length > 0 && <span className='ml-1 text-blue-500'>{`(${selectedOptions.length} selected)`}</span>}
 			</div>
 
-			<div className='absolute w-full overflow-y-scroll transition-opacity bg-white border opacity-0 pointer-events-none peer-checked:opacity-100 peer-checked:pointer-events-auto max-h-60'>
+			<div className='absolute overflow-y-auto transition-opacity bg-white border opacity-0 pointer-events-none max-w-max peer-checked:opacity-100 peer-checked:pointer-events-auto max-h-60'>
 				{isJsEnabled && (
 					<ul>
 						<li>

@@ -6,14 +6,14 @@ const Header = () => {
 	const totalProducts = useCartStore(state => state.totalQuantity);
 
 	return (
-		<header className='sticky top-0 z-[2] w-full flex justify-between items-center p-4 bg-white text-black shadow-md'>
+		<header className='sticky top-0 z-[3] w-full flex justify-between items-center p-4 bg-white text-black shadow-md'>
 			{/* Logo */}
-			<div className='text-2xl font-bold'>
+			<Link to={'/'} className='text-2xl font-bold'>
 				<img src='https://kvytechnology.com/wp-content/uploads/2020/09/KVYTech_Logo.svg' alt='' />
-			</div>
+			</Link>
 
 			{/* Nav Links */}
-			<nav className='hidden md:flex space-x-6'>
+			<nav className='hidden space-x-6 md:flex'>
 				<Link to='/' className='hover:text-gray-300'>
 					Home
 				</Link>
@@ -21,8 +21,8 @@ const Header = () => {
 
 			{/* Cart Icon with Badge */}
 			<Link to={'/cart'} className='relative'>
-				<CartIcon className='h-6 w-6 cursor-pointer hover:text-gray-300' />
-				<span className='absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center'>{totalProducts}</span>
+				<CartIcon className='w-6 h-6 cursor-pointer hover:text-gray-300' />
+				<span className='absolute flex items-center justify-center w-5 h-5 text-xs text-white bg-red-500 rounded-full -top-2 -right-2'>{totalProducts}</span>
 			</Link>
 		</header>
 	);
