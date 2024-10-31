@@ -1,10 +1,19 @@
-# Getting Started with Create React App
+# Take home assignment for Frontend Developer role
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+Make sure you have the following installed on your machine:
+
+- **Node.js** (v20.11.0 or above)
+- **npm** (comes with Node.js)
+
+## Getting started
+
+### `npm install`
+
+Installs all the dependencies required for the project to run.
 
 ### `npm start`
 
@@ -13,11 +22,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
@@ -29,18 +33,19 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### My Approach
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- I have used React for the frontend and have used the following libraries:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  - **axios**: For making API requests
+  - **react-router-dom**: For routing
+  - **tailwindcss**: For styling
+  - **Zustand**: For state management, I used Zustand instead of Redux because it's a lightweight state management library and it's easier to use and setup. I used it to manage the state of the application and to share the state between components so that I can manage the state of the cart and products in a more organized way.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- This role is for a Frontend Developer so I decided to use plain CSS for styling instead of using any UI library like Material-UI or Ant Design with the intention of showcasing my ways of implementing custom components and styling.
+- Challenges faced:
+- Since I'm working fulltime, I had to manage my time effectively to complete the assignment, the time I had was limited so there're some points that I had to skip like adding tests, adding more features like pagination, etc. I'll be happy to discuss these points in the interview if needed.
+- Boostraping the project using Create React App and setting up the project structure and dependencies are pretty straightforward but I faced some issues with the compatibility of create-react-app (Webpack) with other libraries like Tanstack Router, there're other settings that are more straightforward with Vite than Webpack.
+- Didn't apply any UI library takes more time to customize the components and adjust the styles.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Deployed version: [https://take-home-test-jv4w9ctta-heomeco2014s-projects.vercel.app/](https://take-home-test-jv4w9ctta-heomeco2014s-projects.vercel.app/)
